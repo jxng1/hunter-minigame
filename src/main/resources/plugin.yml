@@ -1,0 +1,16 @@
+name: HunterMinigame
+version: ${project.version}
+main: me.jxng1.hunterminigame.HunterMinigamePlugin
+api-version: 1.16
+authors: [ jxng1 ]
+description: Re-write for hub implementation...
+website: github.com/jxng1
+commands:
+  start:
+    description: Start minigame.
+  stop:
+    description: Stop minigame.
+  createclue:
+    description: Create clue for calling player.
+  removeclue:
+    description: Remove clue for current session.
