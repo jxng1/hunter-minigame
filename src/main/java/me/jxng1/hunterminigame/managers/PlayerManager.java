@@ -58,7 +58,7 @@ public class PlayerManager {
 
         Score teamAssigned = objective.getScore(ChatColor.GOLD + "" + ChatColor.BOLD + "Team: " + ChatColor.RED + team + ChatColor.WHITE);
         teamAssigned.setScore(1);
-        Score playersLeft = objective.getScore(ChatColor.GOLD + "" + ChatColor.BOLD + "Players left: " + ChatColor.RED + gameManager.getplayerListSize() + ChatColor.WHITE);
+        Score playersLeft = objective.getScore(ChatColor.GOLD + "" + ChatColor.BOLD + "Players Left: " + ChatColor.RED + gameManager.getplayerListSize() + ChatColor.WHITE);
         playersLeft.setScore(0);
 
         player.setScoreboard(scoreboard);
@@ -67,7 +67,7 @@ public class PlayerManager {
     public void updateScoreboard(Player player) {
         Scoreboard scoreboard = player.getScoreboard();
         Objective objective = scoreboard.getObjective("Title");
-        Score playersLeft = objective.getScore(ChatColor.GOLD + "" + ChatColor.BOLD + "Players left: " + ChatColor.RED + (gameManager.getSurvivorListSize() + 1) + ChatColor.WHITE);
+        Score playersLeft = objective.getScore(ChatColor.GOLD + "" + ChatColor.BOLD + "Players Left: " + ChatColor.RED + (gameManager.getSurvivorListSize() + 1) + ChatColor.WHITE);
 
         playersLeft.setScore(0);
         player.setScoreboard(scoreboard);

@@ -34,7 +34,7 @@ public class GameManager {
 
     public GameManager(HunterMinigamePlugin plugin) {
         this.plugin = plugin;
-        this.playerRequirement = 4;
+        this.playerRequirement = 2;
 
         this.blockManager = new BlockManager(this);
         this.playerManager = new PlayerManager(this);

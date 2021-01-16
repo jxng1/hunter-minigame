@@ -24,7 +24,7 @@ public class EventListener implements Listener {
     public void onPlayerLeave(PlayerQuitEvent event) {
         if (this.gameManager.getPlayerList().contains(event.getPlayer())) {
             this.gameManager.getPlayerList().remove(event.getPlayer());
-            Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.GOLD + event.getPlayer().getDisplayName() + " has left the game queue!");
+            Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.GOLD + event.getPlayer().getDisplayName() + ChatColor.RED + " has left the game queue!");
             Bukkit.broadcastMessage(ChatColor.RED + "" + (this.gameManager.getPlayerRequirement() - this.gameManager.getplayerListSize()) + ChatColor.BOLD + "" + ChatColor.GOLD + " more players required to start the minigame.");
         }
     }

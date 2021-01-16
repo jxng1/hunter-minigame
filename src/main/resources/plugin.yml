@@ -14,3 +14,5 @@ commands:
     description: Create clue for calling player.
   removeclue:
     description: Remove clue for current session.
+  leavequeue:
+    description: Leave queue for minigame.
