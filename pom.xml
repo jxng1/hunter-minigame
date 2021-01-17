@@ -11,7 +11,7 @@
 
     <name>HunterMinigame</name>
 
-    <description>Re-write for hub implementation...</description>
+    <description>Minigame for 1.16 Minecraft.</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

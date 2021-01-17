@@ -1,6 +1,6 @@
 package me.jxng1.hunterminigame.managers;
 
-import me.jxng1.hunterminigame.HunterMinigamePlugin;
+import me.jxng1.hunterminigame.HunterPlugin;
 import me.jxng1.hunterminigame.tasks.GameStartCountdownTask;
 import org.bukkit.*;
 import org.bukkit.block.Block;
@@ -13,7 +13,7 @@ import java.util.*;
 
 public class GameManager {
 
-    private final HunterMinigamePlugin plugin;
+    private final HunterPlugin plugin;
     private GameState gameState = GameState.LOBBY;
 
     private final BlockManager blockManager;
@@ -30,11 +30,10 @@ public class GameManager {
     private List<ItemStack> listOfClues = new ArrayList<>();
     private List<Location> clueLocations = new ArrayList<>();
     private Map<ItemStack, Boolean> clues = new HashMap<>();
-    private int playerRequirement;
+    public static final int PLAYER_REQUIREMENT = 2;
 
-    public GameManager(HunterMinigamePlugin plugin) {
+    public GameManager(HunterPlugin plugin) {
         this.plugin = plugin;
-        this.playerRequirement = 2;
 
         this.blockManager = new BlockManager(this);
         this.playerManager = new PlayerManager(this);
@@ -62,7 +61,7 @@ public class GameManager {
         switch (gameState) {
             case ACTIVE:
                 if (this.gameStartCountdownTask != null) this.gameStartCountdownTask.cancel();
-                this.getPlayerManager().sendTitles(ChatColor.GOLD + "Game has started!");
+                this.getPlayerManager().sendTitles(ChatColor.GOLD + "Game has started!", "", 1, 70, 1);
                 this.getPlayerManager().giveKits();
                 break;
             case STARTING:
@@ -77,12 +76,10 @@ public class GameManager {
                 break;
             case RESTARTING:
                 // tp
-                this.getPlayerManager().sendTitles(ChatColor.GREEN + "Game is restarting!");
                 this.getPlayerManager().setPlayersMode();
                 this.getPlayerManager().clearInventories();
                 this.unassignRoles();
                 this.getPlayerManager().removeScoreboards();
-                this.getPlayerManager().sendTitles(ChatColor.GREEN + "Game has ended!"); // Redundant so far...
                 break;
         }
     }
@@ -93,11 +90,14 @@ public class GameManager {
 
     public void assignTeams() {
         Player newHunter = playerList.get(new Random().nextInt(playerList.size()));
+
+        // Set hunter & survivor role
         setHunter(newHunter);
         this.playerList.stream().filter(player -> player != newHunter).forEach(this::setSurvivor);
 
+        // Set scoreboards for players
         this.getPlayerManager().setGameScoreboard(newHunter, "Hunter");
-        this.playerList.forEach(player -> this.getPlayerManager().setGameScoreboard(player, "Survivors"));
+        survivors.forEach(player -> getPlayerManager().setGameScoreboard(player, "Survivor"));
     }
 
     public void unassignRoles() {
@@ -131,10 +131,6 @@ public class GameManager {
 
     public List<Player> getPlayerList() {
         return this.playerList;
-    }
-
-    public int getPlayerRequirement() {
-        return this.playerRequirement;
     }
 
     public Player getHunter() {

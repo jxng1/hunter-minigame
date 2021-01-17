@@ -1,9 +1,9 @@
-name: HunterMinigame
+name: Hunter
 version: ${project.version}
-main: me.jxng1.hunterminigame.HunterMinigamePlugin
+main: me.jxng1.hunterminigame.HunterPlugin
 api-version: 1.16
 authors: [ jxng1 ]
-description: Re-write for hub implementation...
+description: Minigame for 1.16 Minecraft.
 website: github.com/jxng1
 commands:
   start:

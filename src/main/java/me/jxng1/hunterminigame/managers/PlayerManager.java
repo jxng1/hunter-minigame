@@ -33,8 +33,8 @@ public class PlayerManager {
         gameManager.getPlayerList().forEach(this::clearInventory);
     }
 
-    public void sendTitles(String message) {
-        gameManager.getPlayerList().forEach(player -> sendCountdownMessage(player, message));
+    public void sendTitles(String title, String subtitle, int fadeIn, int stay, int fadeOut) {
+        gameManager.getPlayerList().forEach(player -> sendTitle(player, title, subtitle, fadeIn, stay, fadeOut));
     }
 
     public void removeScoreboards() {
@@ -46,15 +46,6 @@ public class PlayerManager {
 
         Objective objective = scoreboard.registerNewObjective("Title", "dummy", ChatColor.AQUA + "" + ChatColor.BOLD + "HUNTER MINIGAME");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-
-        if (team.equals("Hunter")) { // Team creation depending on what team... REDUNDANT SO FAR...
-            Team hunter = scoreboard.registerNewTeam("Hunter");
-        } else if (team.equals("Survivors")) {
-            Team survivor = scoreboard.registerNewTeam("Survivor");
-        } else {
-            //TODO:
-            //Error handler goes here!
-        }
 
         Score teamAssigned = objective.getScore(ChatColor.GOLD + "" + ChatColor.BOLD + "Team: " + ChatColor.RED + team + ChatColor.WHITE);
         teamAssigned.setScore(1);
@@ -89,8 +80,8 @@ public class PlayerManager {
         player.getInventory().clear();
     }
 
-    public void sendCountdownMessage(Player player, String s) {
-        player.sendTitle(s, "", 1, 21, 1);
+    public void sendTitle(Player player, String title, String subtitle, int fadeIn, int stay, int fadeOut) {
+        player.sendTitle(title, subtitle, fadeIn, stay, fadeOut);
     }
 
     public void removeScoreboard(Player player) {

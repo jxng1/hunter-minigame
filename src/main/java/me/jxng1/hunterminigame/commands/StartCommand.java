@@ -31,11 +31,11 @@ public class StartCommand implements CommandExecutor {
             // gameManager.getPlayerManager().setGameScoreboard((Player)commandSender, "Hunter");
         }
 
-        if (this.gameManager.getplayerListSize() >= this.gameManager.getPlayerRequirement()) {
+        if (this.gameManager.getplayerListSize() >= this.gameManager.PLAYER_REQUIREMENT) {
             this.gameManager.setGameState(GameState.STARTING);
         } else {
             commandSender.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "You have joined the game queue!");
-            Bukkit.broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + (this.gameManager.getPlayerRequirement() - this.gameManager.getplayerListSize()) + ChatColor.GOLD + " more players are required to start the minigame!");
+            Bukkit.broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + (this.gameManager.PLAYER_REQUIREMENT - this.gameManager.getplayerListSize()) + ChatColor.GOLD + " more players are required to start the minigame!");
             return false;
         }
         return true;

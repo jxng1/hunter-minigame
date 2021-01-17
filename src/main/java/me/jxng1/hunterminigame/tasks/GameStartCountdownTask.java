@@ -25,6 +25,6 @@ public class GameStartCountdownTask extends BukkitRunnable {
             return;
         }
 
-        gameManager.getPlayerManager().sendTitles(timeLeft + "" +  ChatColor.GOLD + " until game starts!");
+        gameManager.getPlayerManager().sendTitles(timeLeft + "" +  ChatColor.GOLD + " until game starts!", "", 1, 21, 1);
     }
 }

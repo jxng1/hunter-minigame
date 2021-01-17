@@ -25,7 +25,7 @@ public class EventListener implements Listener {
         if (this.gameManager.getPlayerList().contains(event.getPlayer())) {
             this.gameManager.getPlayerList().remove(event.getPlayer());
             Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.GOLD + event.getPlayer().getDisplayName() + ChatColor.RED + " has left the game queue!");
-            Bukkit.broadcastMessage(ChatColor.RED + "" + (this.gameManager.getPlayerRequirement() - this.gameManager.getplayerListSize()) + ChatColor.BOLD + "" + ChatColor.GOLD + " more players required to start the minigame.");
+            Bukkit.broadcastMessage(ChatColor.RED + "" + (this.gameManager.PLAYER_REQUIREMENT - this.gameManager.getplayerListSize()) + ChatColor.BOLD + "" + ChatColor.GOLD + " more players required to start the minigame.");
         }
     }
 
@@ -37,11 +37,11 @@ public class EventListener implements Listener {
             gameManager.getPlayerList().forEach(player -> gameManager.getPlayerManager().updateScoreboard(player));
 
             if (this.gameManager.getSurvivorListSize() <= 0) {  // if survivors empty, set to win state, hunter won
-                gameManager.getPlayerManager().sendTitles(ChatColor.GOLD + "The hunter " + ChatColor.RED + this.gameManager.getHunter().getDisplayName() + ChatColor.GOLD + " has won!");
+                gameManager.getPlayerManager().sendTitles(ChatColor.GOLD + "The hunter " + ChatColor.RED + this.gameManager.getHunter().getDisplayName() + ChatColor.GOLD + " has won!", "", 1, 70, 1);
                 this.gameManager.setGameState(GameState.RESTARTING);
             }
         } else if (this.gameManager.getHunter() == event.getEntity()) { // survivors win
-            gameManager.getPlayerManager().sendTitles(ChatColor.GOLD + "The survivors have won!");
+            gameManager.getPlayerManager().sendTitles(ChatColor.GOLD + "The survivors have won!", "", 1, 70, 1);
             this.gameManager.setGameState(GameState.RESTARTING);
         }
     }

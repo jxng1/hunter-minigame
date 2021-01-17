@@ -6,14 +6,13 @@ import me.jxng1.hunterminigame.listeners.EventListener;
 import me.jxng1.hunterminigame.managers.GameManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class HunterMinigamePlugin extends JavaPlugin {
+public final class HunterPlugin extends JavaPlugin {
 
     private GameManager gameManager;
+    public HunterPlugin plugin;
 
     @Override
     public void onEnable() {
-        super.onEnable();
-
         this.gameManager = new GameManager(this);
 
         getServer().getPluginManager().registerEvents(new BlockBreakListener(gameManager), this);

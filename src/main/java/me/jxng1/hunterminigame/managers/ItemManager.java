@@ -17,11 +17,6 @@ public class ItemManager {
         this.gameManager = gameManager;
     }
 
-    public static void init() {
-
-
-    }
-
     public ItemStack createGameClue(char c) {
             ItemStack item = new ItemStack(Material.PAPER, 1);
             ItemMeta meta = item.getItemMeta();
