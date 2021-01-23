@@ -14,8 +14,8 @@ import java.util.Random;
 
 public class PlayerManager {
 
-    private GameManager gameManager;
-    private ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
+    private final GameManager gameManager;
+    private final ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
 
     public PlayerManager(GameManager gameManager) {
         this.gameManager = gameManager;

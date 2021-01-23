@@ -20,7 +20,7 @@ public class LeaveQueueCommand implements CommandExecutor {
         if (commandSender instanceof Player) {
             this.gameManager.getPlayerList().remove(commandSender);
             Bukkit.broadcastMessage(ChatColor.BOLD + "" + ChatColor.GOLD + ((Player) commandSender).getDisplayName() + ChatColor.RED + " has left the game queue!");
-            Bukkit.broadcastMessage(ChatColor.RED + "" + (this.gameManager.PLAYER_REQUIREMENT - this.gameManager.getplayerListSize()) + ChatColor.BOLD + "" + ChatColor.GOLD + " more players required to start the minigame.");
+            Bukkit.broadcastMessage(ChatColor.RED + "" + (GameManager.PLAYER_REQUIREMENT - this.gameManager.getplayerListSize()) + ChatColor.BOLD + "" + ChatColor.GOLD + " more players required to start the minigame.");
             return true;
         } else {
             return false;

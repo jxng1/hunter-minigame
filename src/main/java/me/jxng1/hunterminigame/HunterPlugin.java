@@ -27,8 +27,6 @@ public final class HunterPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        super.onDisable();
-
         gameManager.cleanup();
     }
 }

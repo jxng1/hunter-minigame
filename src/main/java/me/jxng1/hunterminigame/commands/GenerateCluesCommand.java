@@ -21,6 +21,9 @@ public class GenerateCluesCommand implements CommandExecutor {
             this.gameManager.createClues(((Player) commandSender).getDisplayName());
             this.gameManager.placeClues(((Player) commandSender));
             Bukkit.broadcastMessage(ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "Clues have been created!");
+
+            // TESTING:
+            gameManager.getPlayerList().add((Player) commandSender);
             return true;
         } else {
             return false;

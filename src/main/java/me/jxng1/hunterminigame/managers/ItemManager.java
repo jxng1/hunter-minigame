@@ -11,25 +11,25 @@ import java.util.List;
 
 public class ItemManager {
 
-    private GameManager gameManager;
+    private final GameManager gameManager;
 
     public ItemManager(GameManager gameManager) {
         this.gameManager = gameManager;
     }
 
     public ItemStack createGameClue(char c) {
-            ItemStack item = new ItemStack(Material.PAPER, 1);
-            ItemMeta meta = item.getItemMeta();
-            meta.setDisplayName("§6" + c);
-            List<String> lore = new ArrayList<>();
-            lore.add("§7This is one part of the clue to find the hunter...");
-            lore.add("§7Find the rest to piece together the name!");
-            meta.setLore(lore);
-            meta.addEnchant(Enchantment.LUCK, 1, false);
-            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-            item.setItemMeta(meta);
+        ItemStack item = new ItemStack(Material.PAPER, 1);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("§6" + c);
+        List<String> lore = new ArrayList<>();
+        lore.add("§7This is one part of the clue to find the hunter...");
+        lore.add("§7Find the rest to piece together the name!");
+        meta.setLore(lore);
+        meta.addEnchant(Enchantment.LUCK, 1, false);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        item.setItemMeta(meta);
 
-            return item;
+        return item;
     }
 
 }

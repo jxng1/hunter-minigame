@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 
 public class StopCommand implements CommandExecutor {
 
-    private GameManager gameManager;
+    private final GameManager gameManager;
 
     public StopCommand(GameManager gameManager) {
         this.gameManager = gameManager;

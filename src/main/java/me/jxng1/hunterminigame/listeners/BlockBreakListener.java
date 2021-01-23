@@ -6,7 +6,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 
 public class BlockBreakListener implements Listener {
 
-    private GameManager gameManager;
+    private final GameManager gameManager;
 
     public BlockBreakListener(GameManager gameManager) {
         this.gameManager = gameManager;

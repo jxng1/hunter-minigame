@@ -27,9 +27,11 @@ public class GameManager {
     private Player hunter;
     private final List<Player> survivors = new ArrayList<>();
 
-    private List<ItemStack> listOfClues = new ArrayList<>();
-    private List<Location> clueLocations = new ArrayList<>();
-    private Map<ItemStack, Boolean> clues = new HashMap<>();
+    private final List<Location> clueLocations = new ArrayList<>();
+    private final Map<ItemStack, Boolean> clues = new HashMap<>();
+    private String nameString = "";
+    private String maskedString = "";
+
     public static final int PLAYER_REQUIREMENT = 2;
 
     public GameManager(HunterPlugin plugin) {
@@ -76,10 +78,7 @@ public class GameManager {
                 break;
             case RESTARTING:
                 // tp
-                this.getPlayerManager().setPlayersMode();
-                this.getPlayerManager().clearInventories();
-                this.unassignRoles();
-                this.getPlayerManager().removeScoreboards();
+                cleanup();
                 break;
         }
     }
@@ -146,13 +145,16 @@ public class GameManager {
     }
 
     public void createClues(String name) {
+        nameString = name;
+        maskedString = nameString.replaceAll(".", "*");
+        Bukkit.getLogger().info("nameString: " + nameString + " maskedString: " + maskedString);
         for (char c : name.toCharArray()) {
-            this.listOfClues.add(this.getItemManager().createGameClue(c));
+            clues.put(getItemManager().createGameClue(c), false);
         }
     }
 
     public void placeClues(Player player) { // For now, generate the clue chests around the player... //
-        for (ItemStack clue : listOfClues) {
+        for (ItemStack clue : clues.keySet()) {
             Location playerLocation = player.getLocation();
             World playerWorld = player.getWorld();
             Random random = new Random();
@@ -170,7 +172,6 @@ public class GameManager {
             Inventory inventory = chest.getInventory();
             inventory.addItem(clue);
             clueLocations.add(target.getLocation());
-            clues.put(clue, false);
         }
     }
 
@@ -187,11 +188,39 @@ public class GameManager {
             target.setType(Material.AIR);
         }
 
+        clues.clear(); // MAP
         clueLocations.clear();
-        listOfClues.clear();
+    }
+
+    public Map<ItemStack, Boolean> getCluesMap() {
+        return clues;
+    }
+
+    public void broadcastName() {
+        getPlayerManager().sendTitles("A new clue has been found!", "", 1, 70, 1);
+        Bukkit.getScheduler().runTaskLater(plugin,
+                task -> getPlayerManager().sendTitles("The name of the hunter is: " + maskedString, "", 1, 70, 1),
+                20);
+    }
+
+    public String getNameString() {
+        return nameString;
+    }
+
+    public String getMaskedString() {
+        return maskedString;
+    }
+
+    public void updateMaskedString(char[] charArray) {
+        maskedString = String.valueOf(charArray);
     }
 
     public void cleanup() {
+        nameString = "";
         removeClues();
+        getPlayerManager().setPlayersMode();
+        getPlayerManager().clearInventories();
+        unassignRoles();
+        getPlayerManager().removeScoreboards();
     }
 }

@@ -8,8 +8,8 @@ import java.util.Set;
 
 public class BlockManager {
 
-    private Set<Material> allowedToBreak = new HashSet<>();
-    private GameManager gameManager;
+    private final Set<Material> allowedToBreak = new HashSet<>();
+    private final GameManager gameManager;
 
     public BlockManager(GameManager gameManager) {
         this.gameManager = gameManager;

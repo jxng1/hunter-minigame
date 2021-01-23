@@ -8,7 +8,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class GameStartCountdownTask extends BukkitRunnable {
 
-    private GameManager gameManager;
+    private final GameManager gameManager;
 
     public GameStartCountdownTask(GameManager gameManager) {
         this.gameManager = gameManager;
@@ -25,6 +25,6 @@ public class GameStartCountdownTask extends BukkitRunnable {
             return;
         }
 
-        gameManager.getPlayerManager().sendTitles(timeLeft + "" +  ChatColor.GOLD + " until game starts!", "", 1, 21, 1);
+        gameManager.getPlayerManager().sendTitles(timeLeft + "" + ChatColor.GOLD + " until game starts!", "", 1, 21, 1);
     }
 }
