@@ -1,4 +1,8 @@
 # hunter-minigame
-Minigame for 1.16.
+A Minecraft minigame for 1.16.
 
-I've decided to put this project on hold because I want to start on some more advanced ideas. The base minigame works but this plugin is nowhere finished and I will eventually either re-write the codebase to be better and add further expansions.
+This is a Minecraft minigame that is an idea based on the popular detective type game Among Us. There are two roles, the survivors and the hunter. 
+
+The hunter has the task of killing all survivors before being discovered and killed themselves.
+
+The survivors have to find clues with parts of the name(display name) of the killer and group up and kill them. However, they don't have weapons(unless they find one), whereas the killer has a set of armor(unequipped) and a sword.
