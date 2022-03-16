@@ -1,5 +1,5 @@
 # hunter-minigame
-A Minecraft minigame revolving around a murder-mystery for 1.16.
+A Minecraft minigame revolving around a murder-mystery for version 1.16.
 
 This is a Minecraft minigame that is an idea based on the popular genre of murder mysteries. There are two roles, the survivors and the hunter. 
 
